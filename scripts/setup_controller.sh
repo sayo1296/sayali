@@ -85,7 +85,7 @@ set -ex
     fi
 
     if [ $dbServerType = "mysql" ]; then
-        apt-get -y --force-yes install mysql-client >> /tmp/apt3.log
+        apt-get -y --force-yes install mysql-client >> /tmp/italentlog1.txt
     elif [ "$dbServerType" = "postgres" ]; then
         #apt-get -y --force-yes install postgresql-client >> /tmp/apt3.log
         # Get a new version of Postgres to match Azure version (default Xenial postgresql-client version--previous line--is 9.5)
@@ -122,7 +122,7 @@ set -ex
     apt-get install -y --force-yes php-common php-soap php-json php-redis php-bcmath php-gd php-xmlrpc php-intl php-xml php-bz2 php-pear php-mbstring php-dev mcrypt >> /tmp/apt6.log
     PhpVer=$(get_php_version)
     if [ $dbServerType = "mysql" ]; then
-        apt-get install -y --force-yes php-mysql
+        apt-get install -y --force-yes php-mysql >> /tmp/italentlog2.txt
     elif [ $dbServerType = "mssql" ]; then
         apt-get install -y libapache2-mod-php  # Need this because install_php_mssql_driver tries to update apache2-mod-php settings always (which will fail without this)
         install_php_mssql_driver
