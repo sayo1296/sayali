@@ -780,6 +780,31 @@
                 "Microsoft.Resources/deployments/redisTemplate",
                 "Microsoft.Resources/deployments/dbTemplate"
             ],
+            "name": "AzureDBMySQLPass",
+            "properties": {
+                "mode": "Incremental",
+                "parameters": {
+                    "lampCommon": {
+                        "value": "[variables('lampCommon')]"
+                    }
+                },
+                "templateLink": {
+                    "uri": "[concat(variables('lampCommon').baseTemplateUrl,'MySQLPaaS.json',parameters('_artifactsLocationSasToken'))]"
+                }
+            }
+        },
+
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2017-05-10",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/vmSetupParamsTemplate",
+                "Microsoft.Resources/deployments/controllerTemplate",
+                "Microsoft.Resources/deployments/networkTemplate",
+                "Microsoft.Resources/deployments/redisTemplate",
+                "Microsoft.Resources/deployments/dbTemplate",
+                "Microsoft.Resources/deployments/AzureDBMySQLPass"
+            ],
             "name": "scaleSetTemplate",
             "properties": {
                 "mode": "Incremental",

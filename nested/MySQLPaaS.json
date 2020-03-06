@@ -1,0 +1,95 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "administratorLogin": {
+            "type": "string",
+            "value": "italentdigital"
+        },
+        "administratorLoginPassword": {
+            "type": "securestring",
+             "value": null
+        },
+        "location": {
+            "type": "string"
+        },
+        "serverName": {
+            "type": "string",
+            "value": "italent-azure-db-server"
+        },
+        "skuCapacity": {
+            "type": "int",
+            "value": 1
+        },
+        "skuFamily": {
+            "type": "string",
+            "value": "Gen5"
+        },
+        "skuName": {
+            "type": "string",
+            "value": "B_Gen5_1"
+        },
+        "skuSizeMB": {
+            "type": "int",
+            "value": 5120
+        },
+        "skuTier": {
+            "type": "string",
+            "value": "Basic"
+        },
+        "version": {
+            "type": "string",
+              "value": "5.7"
+        },
+        "backupRetentionDays": {
+            "type": "int",
+             "value": 7
+        },
+        "geoRedundantBackup": {
+            "type": "string",
+            "value": "Disabled"
+        },
+        "previewFeature": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "tags": {
+            "type": "object",
+            "defaultValue": {}
+        },
+        "storageAutoGrow": {
+            "type": "string",
+            "defaultValue": "Disabled"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2017-12-01-preview",
+            "kind": "",
+            "location": "[parameters('lampCommon').location]",
+            "name": "[parameters('serverName')]",
+            "properties": {
+                "version": "[parameters('version')]",
+                "administratorLogin": "[parameters('administratorLogin')]",
+                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                "storageProfile": {
+                    "storageMB": "[parameters('skuSizeMB')]",
+                    "backupRetentionDays": "[parameters('backupRetentionDays')]",
+                    "geoRedundantBackup": "[parameters('geoRedundantBackup')]",
+                    "storageAutoGrow": "[parameters('storageAutoGrow')]"
+                },
+                "previewFeature": "[parameters('previewFeature')]"
+            },
+            "sku": {
+                "name": "[parameters('skuName')]",
+                "tier": "[parameters('skuTier')]",
+                "capacity": "[parameters('skuCapacity')]",
+                "size": "[parameters('skuSizeMB')]",
+                "family": "[parameters('skuFamily')]"
+            },
+            "tags": "[parameters('tags')]",
+            "type": "Microsoft.DBforMySQL/servers"
+        }
+    ],
+    "variables": {}
+}
