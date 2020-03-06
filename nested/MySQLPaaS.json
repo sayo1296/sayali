@@ -12,44 +12,34 @@
             "type": "string"
         },
         "serverName": {
-            "type": "string",
-            "value": "italent-azure-db-server"
+            "type": "string"
         },
         "skuCapacity": {
-            "type": "int",
-            "value": 1
+            "type": "int"
         },
         "skuFamily": {
-            "type": "string",
-            "value": "Gen5"
+            "type": "string"
         },
         "skuName": {
-            "type": "string",
-            "value": "B_Gen5_1"
+            "type": "string"
         },
         "skuSizeMB": {
-            "type": "int",
-            "value": 5120
+            "type": "int"
         },
         "skuTier": {
-            "type": "string",
-            "value": "Basic"
+            "type": "string"
         },
         "version": {
-            "type": "string",
-              "value": "5.7"
+            "type": "string"
         },
         "backupRetentionDays": {
-            "type": "int",
-             "value": 7
+            "type": "int"
         },
         "geoRedundantBackup": {
-            "type": "string",
-            "value": "Disabled"
+            "type": "string"
         },
         "previewFeature": {
-            "type": "string",
-            "defaultValue": ""
+            "type": "string"
         },
         "tags": {
             "type": "object",
